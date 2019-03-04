@@ -10,7 +10,8 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var useref = require('gulp-useref');
-
+var imagemin = require('gulp-imagemin');
+var cache = require('gulp-cache');
 
 gulp.task('sass', function () {
     return gulp.src('src/scss/**/*.scss')
@@ -30,6 +31,12 @@ gulp.task('babel', function () {
         .pipe(browserSync.reload({
             stream: true
         }))
+})
+
+gulp.task('image', function () {
+    return gulp.src('src/img/**/*.+(png|jpg|gif|svg)')
+        .pipe(cache(imagemin()))
+        .pipe(gulp.dest('dist/img'))
 })
 
 gulp.task('browserSync:dev', function () {
@@ -69,7 +76,7 @@ gulp.task('clean:dist', function (done) {
     done()
 })
 
-gulp.task('build', gulp.series('clean:dist', 'sass', 'compress', function (done) {
+gulp.task('build', gulp.series('clean:dist', 'sass', 'compress', 'image', function (done) {
     done()
 }))
 
