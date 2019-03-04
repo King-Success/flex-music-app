@@ -1,14 +1,14 @@
 {
   "name": "stoicdeveloper.dev",
   "version": "1.0.0",
-  "description": "",
+  "description": "A music app layout completely laid out with flex-box",
   "main": "/dist/index.html",
   "scripts": {
     "build": "gulp build",
     "dev": "gulp start:dev",
     "start": "gulp start:prod"
   },
-  "author": "",
+  "author": "Stoic Developer",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.3.4",
